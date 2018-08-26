@@ -5,6 +5,10 @@
 
 Written in ES5 for maximum compatibility.
 
+## Install
+```
+npm install time-slots-generator --save
+```
 ## Usage
 ```
 var ts=require("time-slots-generator");
