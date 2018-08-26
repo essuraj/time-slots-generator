@@ -43,6 +43,7 @@ ts.getTimeSlots(blockTimes,showTimeAsString,timeInterval)
     - splits the time interval based on the string sent, allowed strings are
      `["tenth","quarter","half","one","two","three","four"]`
 
+### Full Example
 ```javascript
 
 const tc = require("time-slots-generator");
