@@ -52,19 +52,21 @@ function getTimeSlots(blockTimes, showTimeAsString, interval) {
     Array.isArray(blockTimes) === true && blockTimes.length > 0
       ? blockTimes
       : [];
-  var res2 = blockTimes.reduce(function(acc, x) {
-    return acc
-      .filter(function(y) {
-        return y < x[0];
-      })
-      .concat(
-        acc.filter(function(y) {
-          return y > x[1];
+  if (blockTimes.length > 0) {
+    dateTimes = blockTimes.reduce(function(acc, x) {
+      return acc
+        .filter(function(y) {
+          return y < x[0];
         })
-      );
-  }, dateTimes);
+        .concat(
+          acc.filter(function(y) {
+            return y > x[1];
+          })
+        );
+    }, dateTimes);
+  }
   if (showTimeAsString === true) {
-    return res2
+    return dateTimes
       .map(function(x) {
         return getTime(x);
       })
