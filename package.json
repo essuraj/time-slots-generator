@@ -1,12 +1,9 @@
 {
   "name": "time-slots",
   "version": "1.0.0",
-  "description": "",
+  "description": "a time slot generator with ability to filter out blocked times",
   "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
   "keywords": [],
-  "author": "",
-  "license": "ISC"
+  "author": "Suraj Elapully",
+  "license": "MIT"
 }

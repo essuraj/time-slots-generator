@@ -1,12 +1,11 @@
 function getTime(num) {
-  let temp = String(Math.trunc(num / 60));
-  let tempHour = temp + "".length === 1 ? "0" + temp : temp;
-  let tempmin = num % 60 === 0 ? "00" : num % 60;
+  var temp = String(Math.trunc(num / 60));
+  var tempHour = temp + "".length === 1 ? "0" + temp : temp;
+  var tempmin = num % 60 === 0 ? "00" : num % 60;
   return { num: num, time: tempHour + ":" + tempmin };
 }
-
 function getTimeSlots(blockTimes, showTimeAsString, interval) {
-  let times = 1,
+  var times = 1,
     sums = 60;
   switch (interval) {
     case "thenth":
@@ -37,17 +36,15 @@ function getTimeSlots(blockTimes, showTimeAsString, interval) {
       times = 1 / 4;
       sums = 240;
       break;
-
     default:
       times = 1;
       sums = 60;
       break;
   }
-
-  let start = 0;
-  let dateTimes = Array(Math.round(24 * times))
+  var start = 0;
+  var dateTimes = Array(Math.round(24 * times))
     .fill(0)
-    .map(_ => {
+    .map(function(_) {
       start = start + sums;
       return start;
     });
@@ -55,14 +52,26 @@ function getTimeSlots(blockTimes, showTimeAsString, interval) {
     Array.isArray(blockTimes) === true && blockTimes.length > 0
       ? blockTimes
       : [];
-  let res2 = blockTimes.reduce((acc, x) => {
-    return acc.filter(y => y < x[0]).concat(acc.filter(y => y > x[1]));
+  var res2 = blockTimes.reduce(function(acc, x) {
+    return acc
+      .filter(function(y) {
+        return y < x[0];
+      })
+      .concat(
+        acc.filter(function(y) {
+          return y > x[1];
+        })
+      );
   }, dateTimes);
   if (showTimeAsString === true) {
-    return res2.map(x => getTime(x)).reduce((accc, element) => {
-      accc[`${element.num}`] = element.time;
-      return accc;
-    }, {});
+    return res2
+      .map(function(x) {
+        return getTime(x);
+      })
+      .reduce(function(accc, element) {
+        accc["" + element.num] = element.time;
+        return accc;
+      }, {});
   }
   return dateTimes;
 }
@@ -71,4 +80,4 @@ module.exports = {
   getTimeSlots: getTimeSlots
 };
 
-console.log(getTimeSlots([[340, 550], [920, 1240]],true,"thenth"));
+// console.log(getTimeSlots([[340, 550], [920, 1240]], true, "thenth"));
