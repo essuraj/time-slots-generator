@@ -1,10 +1,7 @@
 # time-slots-generator
 ### A time slot generator with ability to filter out blocked times.
 
-[npm-image]: https://img.shields.io/npm/v/time-slots-generator.svg
-[npm-url]: https://npmjs.org/package/time-slots-generator
-[downloads-image]: https://img.shields.io/npm/dm/time-slots-generator.svg
-[downloads-url]: https://npmjs.org/package/time-slots-generator
+[![NPM version](https://img.shields.io/npm/v/time-slots-generator.svg)](https://img.shields.io/npm/v/time-slots-generator.svg)
 
 Written in ES5 for maximum compatibility.
 
