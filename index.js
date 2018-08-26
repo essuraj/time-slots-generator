@@ -1,14 +1,14 @@
 function getTime(num) {
-  var temp = String(Math.trunc(num / 60));
-  var tempHour = temp + "".length === 1 ? "0" + temp : temp;
-  var tempmin = num % 60 === 0 ? "00" : num % 60;
-  return { num: num, time: tempHour + ":" + tempmin };
+  var tempHour = String(Math.trunc(num / 60));
+  var hour = tempHour + "".length === 1 ? "0" + tempHour : tempHour;
+  var min = num % 60 === 0 ? "00" : num % 60;
+  return { num: num, time: hour + ":" + min };
 }
 function getTimeSlots(blockTimes, showTimeAsString, interval) {
   var times = 1,
     sums = 60;
   switch (interval) {
-    case "thenth":
+    case "tenth":
       times = 6;
       sums = 10;
       break;
@@ -80,4 +80,4 @@ module.exports = {
   getTimeSlots: getTimeSlots
 };
 
-// console.log(getTimeSlots([[340, 550], [920, 1240]], true, "thenth"));
+// console.log(getTimeSlots([[340, 550], [920, 1240]], true, "tenth"));
