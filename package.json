@@ -1,9 +1,17 @@
 {
-  "name": "time-slots",
-  "version": "1.0.0",
+  "name": "time-slots-generator",
+  "version": "1.0.1",
   "description": "a time slot generator with ability to filter out blocked times",
   "main": "index.js",
-  "keywords": [],
+  "keywords": [
+    "time-slots",
+    "blocked",
+    "schedule",
+    "appointments",
+    "time",
+    "slot"
+  ],
+  "repository": "github:essuraj/time-slots-generator",
   "author": "Suraj Elapully",
   "license": "MIT"
 }
