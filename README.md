@@ -13,7 +13,7 @@ npm install time-slots-generator --save
 ```
 var ts=require("time-slots-generator");
 
-ts.getTimeSlots(blockTimes,showTimeAsString,timeInterval)
+ts.getTimeSlots(blockTimes, showTimeAsString, timeInterval, includeBlockedTimes)
 ```
 - blockTimes 
     - `Array of start and end times` 
@@ -36,12 +36,18 @@ ts.getTimeSlots(blockTimes,showTimeAsString,timeInterval)
 
      `Eg: {270:'4:30'}`
 
-
 - timeInterval 
     - `string`
     - ` default: hour`
     - splits the time interval based on the string sent, allowed strings are
+    
      `["tenth","quarter","half","one","two","three","four"]`
+
+- includeBlockedTimes 
+    - `Boolean`
+    - ` default: false`
+    - includes the  start and end times from blockedTimes in the generated array.
+    
 
 ### Full Example
 ```javascript

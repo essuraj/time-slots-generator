@@ -4,9 +4,10 @@ function getTime(num) {
   var min = num % 60 === 0 ? "00" : num % 60;
   return { num: num, time: hour + ":" + min };
 }
-function getTimeSlots(blockTimes, showTimeAsString, interval) {
+function getTimeSlots(blockTimes, showTimeAsString, interval, includeBlockedTimes) {
   var times = 1,
     sums = 60;
+  includeBlockedTimes = includeBlockedTimes === true ? true : false;
   switch (interval) {
     case "tenth":
       times = 6;
@@ -48,19 +49,16 @@ function getTimeSlots(blockTimes, showTimeAsString, interval) {
       start = start + sums;
       return start;
     });
-  blockTimes =
-    Array.isArray(blockTimes) === true && blockTimes.length > 0
-      ? blockTimes
-      : [];
+  blockTimes = Array.isArray(blockTimes) === true && blockTimes.length > 0 ? blockTimes : [];
   if (blockTimes.length > 0) {
     dateTimes = blockTimes.reduce(function(acc, x) {
       return acc
         .filter(function(y) {
-          return y <= x[0];
+          return includeBlockedTimes == true ? y <= x[0] : y < x[0];
         })
         .concat(
           acc.filter(function(y) {
-            return y >= x[1];
+            return includeBlockedTimes == true ? y >= x[1] : y > x[1];
           })
         );
     }, dateTimes);
