@@ -56,11 +56,11 @@ function getTimeSlots(blockTimes, showTimeAsString, interval) {
     dateTimes = blockTimes.reduce(function(acc, x) {
       return acc
         .filter(function(y) {
-          return y < x[0];
+          return y <= x[0];
         })
         .concat(
           acc.filter(function(y) {
-            return y > x[1];
+            return y >= x[1];
           })
         );
     }, dateTimes);
