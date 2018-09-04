@@ -4,10 +4,11 @@ function getTime(num) {
   var min = num % 60 === 0 ? "00" : num % 60;
   return { num: num, time: hour + ":" + min };
 }
-function getTimeSlots(blockTimes, showTimeAsString, interval, includeBlockedTimes) {
+function getTimeSlots(blockTimes, showTimeAsString, interval, includeStartBlockedTime,includeEndBlockedTime) {
   var times = 1,
     sums = 60;
-  includeBlockedTimes = includeBlockedTimes === true ? true : false;
+    includeStartBlockedTime = includeStartBlockedTime === true ? true : false;
+    includeEndBlockedTime = includeEndBlockedTime === true ? true : false;
   switch (interval) {
     case "tenth":
       times = 6;
@@ -54,11 +55,11 @@ function getTimeSlots(blockTimes, showTimeAsString, interval, includeBlockedTime
     dateTimes = blockTimes.reduce(function(acc, x) {
       return acc
         .filter(function(y) {
-          return includeBlockedTimes == true ? y <= x[0] : y < x[0];
+          return includeStartBlockedTime == true ? y <= x[0] : y < x[0];
         })
         .concat(
           acc.filter(function(y) {
-            return includeBlockedTimes == true ? y >= x[1] : y > x[1];
+            return includeEndBlockedTime == true ? y >= x[1] : y > x[1];
           })
         );
     }, dateTimes);

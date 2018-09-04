@@ -1,6 +1,6 @@
 {
   "name": "time-slots-generator",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "a time slot generator with ability to filter out blocked times",
   "main": "index.js",
   "keywords": [
